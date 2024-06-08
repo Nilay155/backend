@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema(
         timestamps : true, // Created and Updated at timeline
     }
 )
-// Password handling
+// Password handling using bcrypt
 userSchema.pre("save", async function(next) { // arrow function mat use karna cause context chaiye callback function main
     if(this.isModified('password')){
         this.password = bcrypt.hash(this.password,10);
