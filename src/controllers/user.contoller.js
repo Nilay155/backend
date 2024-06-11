@@ -124,9 +124,9 @@ const loginUser = asyncHandler(async (req,res) => {
     }
 
     const isPasswordCorrect = await user.isPasswordCorrect(password);
-
+    let tokens;
     if(isPasswordCorrect) {
-        const tokens = await generateTokens(user._id);
+        tokens = await generateTokens(user._id);
     } else {
         throw new ApiError(404,"Incorrect Password");
     }
