@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
             index : true, // Searching main help karta hain
         },
         email : {
-            type : string,
+            type : String,
             required : true,
             unique : true,
             lowercase : true,
@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema(
 // Password handling using bcrypt
 userSchema.pre("save", async function(next) { // arrow function mat use karna cause context chaiye callback function main
     if(this.isModified('password')){
-        this.password = bcrypt.hash(this.password,10);
+        this.password = await bcrypt.hash(this.password,13);
     }
     next();
 })
@@ -63,6 +63,7 @@ userSchema.methods.isPasswordCorrect = async function(password) {
     return await bcrypt.compare(password,this.password); // returns true or false
 }
 
+// JWT TOKENS -> Used For Authorization to Communicate Securely
 // JWT TOKENS -> Access Tokens and Refresh Tokens
 userSchema.methods.generateAccessToken = function() {
     return jwt.sign(
