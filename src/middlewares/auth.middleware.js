@@ -19,7 +19,6 @@ export const verifyJWT = asyncHandler( async (req,res,next) => {
         req.user = user;
         next();
     } catch (error) {
-        throw new ApiError(401,"Error in JWT-VERIFICATION");
-        // console.log(`Error in JWT-VERIFICATION`,error);
+        throw new ApiError(401,"Error in JWT-VERIFICATION",error);
     }
 })

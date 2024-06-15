@@ -6,7 +6,9 @@ import fs from 'fs'; // file system
     // Connecting to Cloudinary
     // Configuration
     cloudinary.config({ 
-        
+        cloud_name: "dmbi00yzt", 
+        api_key: "118335242349298", 
+        api_secret: "Ji1NdEFO3U-pjcKoW5qqvdcApLw" // Click 'View Credentials' below to copy your API secret
     });  
 })();
 
